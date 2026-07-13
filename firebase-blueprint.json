@@ -1,0 +1,153 @@
+{
+  "entities": {
+    "Category": {
+      "title": "Category",
+      "description": "Category representation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "icon": { "type": "string" },
+        "slug": { "type": "string" }
+      },
+      "required": ["id", "name", "icon", "slug"]
+    },
+    "FoodItem": {
+      "title": "FoodItem",
+      "description": "Culinary menu food item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "category": { "type": "string" },
+        "rating": { "type": "number" },
+        "image": { "type": "string" },
+        "isPopular": { "type": "boolean" },
+        "isSpecial": { "type": "boolean" },
+        "isChefRecommended": { "type": "boolean" },
+        "isBestSeller": { "type": "boolean" },
+        "available": { "type": "boolean" }
+      },
+      "required": ["id", "name", "description", "price", "category", "rating", "image", "available"]
+    },
+    "OrderItem": {
+      "title": "OrderItem",
+      "description": "Item within an order",
+      "type": "object",
+      "properties": {
+        "foodId": { "type": "string" },
+        "name": { "type": "string" },
+        "price": { "type": "number" },
+        "quantity": { "type": "number" },
+        "image": { "type": "string" }
+      },
+      "required": ["foodId", "name", "price", "quantity"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Gourmet customer order representation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerEmail": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "items": { "type": "array" },
+        "totalAmount": { "type": "number" },
+        "discountAmount": { "type": "number" },
+        "finalAmount": { "type": "number" },
+        "couponUsed": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "preparing", "completed", "cancelled"] },
+        "createdAt": { "type": "string" },
+        "type": { "type": "string", "enum": ["dine-in", "delivery"] },
+        "deliveryAddress": { "type": "string" }
+      },
+      "required": ["id", "customerName", "customerEmail", "customerPhone", "items", "totalAmount", "discountAmount", "finalAmount", "status", "createdAt", "type"]
+    },
+    "Reservation": {
+      "title": "Reservation",
+      "description": "Table booking reservation representation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "guests": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "cancelled"] },
+        "specialRequests": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "tableNumber": { "type": "string" }
+      },
+      "required": ["id", "name", "email", "phone", "date", "time", "guests", "status", "createdAt"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "Customer opinion review representation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "author": { "type": "string" },
+        "email": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "foodName": { "type": "string" },
+        "date": { "type": "string" },
+        "approved": { "type": "boolean" }
+      },
+      "required": ["id", "author", "email", "rating", "comment", "date", "approved"]
+    },
+    "Coupon": {
+      "title": "Coupon",
+      "description": "Promo coupon representation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "discountType": { "type": "string", "enum": ["percent", "fixed"] },
+        "discountValue": { "type": "number" },
+        "minOrderAmount": { "type": "number" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["id", "code", "discountType", "discountValue", "minOrderAmount", "active"]
+    },
+    "GalleryItem": {
+      "title": "GalleryItem",
+      "description": "Restaurant tour gallery representation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string", "enum": ["food", "interior", "chef"] }
+      },
+      "required": ["id", "imageUrl", "title", "category"]
+    },
+    "OpeningHours": {
+      "title": "OpeningHours",
+      "description": "Opening hours representation",
+      "type": "object",
+      "properties": {
+        "day": { "type": "string" },
+        "open": { "type": "string" },
+        "close": { "type": "string" },
+        "isClosed": { "type": "boolean" }
+      },
+      "required": ["day", "open", "close", "isClosed"]
+    }
+  },
+  "firestore": {
+    "categories": { "schema": "Category", "description": "Gourmet categories" },
+    "foods": { "schema": "FoodItem", "description": "Menu items" },
+    "orders": { "schema": "Order", "description": "Customer orders" },
+    "reservations": { "schema": "Reservation", "description": "Table bookings" },
+    "reviews": { "schema": "Review", "description": "Moderated reviews" },
+    "coupons": { "schema": "Coupon", "description": "Promo discounts" },
+    "gallery": { "schema": "GalleryItem", "description": "Gallery images" },
+    "opening_hours": { "schema": "OpeningHours", "description": "Schedule" }
+  }
+}

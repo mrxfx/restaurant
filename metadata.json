@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Kaizen Spirit",
+  "description": "World-class premium Japanese restaurant in Agartala, Tripura - Food First Experience.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

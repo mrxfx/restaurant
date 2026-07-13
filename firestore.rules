@@ -1,0 +1,49 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global fallback default-deny rule
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Categories collection rules
+    match /categories/{id} {
+      allow read, write: if true;
+    }
+
+    // Foods collection rules
+    match /foods/{id} {
+      allow read, write: if true;
+    }
+
+    // Orders collection rules
+    match /orders/{id} {
+      allow read, write: if true;
+    }
+
+    // Reservations collection rules
+    match /reservations/{id} {
+      allow read, write: if true;
+    }
+
+    // Reviews collection rules
+    match /reviews/{id} {
+      allow read, write: if true;
+    }
+
+    // Coupons collection rules
+    match /coupons/{id} {
+      allow read, write: if true;
+    }
+
+    // Gallery collection rules
+    match /gallery/{id} {
+      allow read, write: if true;
+    }
+
+    // Opening Hours collection rules
+    match /opening_hours/{id} {
+      allow read, write: if true;
+    }
+  }
+}
